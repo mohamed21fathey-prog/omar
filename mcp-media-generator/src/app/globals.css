@@ -1,0 +1,232 @@
+@import "tailwindcss";
+
+:root {
+  --bg: #070b14;
+  --card: #0d1117;
+  --line: #1c2434;
+  --gold: #e7b84c;
+  --gold-soft: rgba(231, 184, 76, 0.5);
+}
+
+body {
+  font-family: var(--font-tajawal), "Tajawal", "Segoe UI", Tahoma, Arial, sans-serif;
+  /* مساحة أسفل كل الصفحات = ارتفاع فقاعات الشات/واتساب الثابتة — عشان ما تغطيش أزرار أو فيديوهات */
+  padding-bottom: 72px;
+  /* 🎨 هوية فاخرة هادئة — كحلي منتصف الليل بهالة بنفسجية وذهبية خافتة جدًا */
+  background:
+    radial-gradient(1000px 480px at 82% -8%, rgba(99, 102, 241, 0.10), transparent 60%),
+    radial-gradient(880px 460px at 10% -6%, rgba(231, 184, 76, 0.05), transparent 58%),
+    radial-gradient(820px 560px at 50% 118%, rgba(79, 70, 229, 0.08), transparent 62%),
+    #070b14;
+  color: #e6ebf4;
+}
+
+::selection { background: rgba(231, 184, 76, 0.28); color: #fff; }
+
+:focus-visible {
+  outline: 2px solid rgba(231, 184, 76, 0.65);
+  outline-offset: 2px;
+  border-radius: 6px;
+}
+
+::-webkit-scrollbar {
+  width: 8px;
+  height: 8px;
+}
+::-webkit-scrollbar-thumb {
+  background: #232e42;
+  border-radius: 8px;
+}
+::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+input, select, textarea {
+  outline: none;
+}
+
+/* ============================================================
+   🌗 الوضع الفاتح — html.theme-light يُضاف من مبدل الثيم (ThemeToggle)
+   يعيد تعيين ألوان الأسطح والنصوص المستخدمة في الصفحات الداكنة
+   الافتراضي يبقى الغامق الفاخر
+   ============================================================ */
+html.theme-light body {
+  background:
+    radial-gradient(900px 460px at 85% -10%, rgba(99, 102, 241, 0.06), transparent 60%),
+    #f4f6fa;
+  color: #17202e;
+}
+html.theme-light ::-webkit-scrollbar-thumb {
+  background: #c9d2e0;
+}
+
+/* الخلفية المتدرجة → فاتحة ناعمة موحدة */
+html.theme-light .bg-gradient-to-b {
+  background-image: linear-gradient(to bottom, #f7f8fc 0%, #f4f5fb 55%, #f8f6f2 100%) !important;
+}
+
+/* الأسطح الداكنة → بيضاء/فاتحة */
+html.theme-light .bg-slate-950 { background-color: #e5e9f0 !important; }
+html.theme-light .bg-slate-950\/70 { background-color: rgba(255, 255, 255, 0.92) !important; }
+html.theme-light .bg-slate-950\/80 { background-color: rgba(255, 255, 255, 0.94) !important; }
+html.theme-light .bg-slate-900 { background-color: #f8fafc !important; }
+html.theme-light .bg-slate-900\/70 { background-color: #f8fafc !important; }
+html.theme-light .bg-slate-900\/60 { background-color: #f8fafc !important; }
+html.theme-light .bg-slate-900\/50 { background-color: #f1f4f9 !important; }
+html.theme-light .bg-slate-800 { background-color: #ffffff !important; }
+html.theme-light .bg-slate-800\/70 { background-color: #ffffff !important; }
+html.theme-light .bg-slate-800\/80 { background-color: #ffffff !important; }
+html.theme-light .bg-slate-800\/40 { background-color: #f8fafc !important; }
+html.theme-light .bg-slate-700\/60 { background-color: #e5e9f0 !important; }
+html.theme-light .bg-white\/5 { background-color: rgba(15, 23, 42, 0.04) !important; }
+html.theme-light .bg-white\/10 { background-color: rgba(15, 23, 42, 0.08) !important; }
+
+/* الحدود */
+html.theme-light .border-slate-600\/50, html.theme-light .border-slate-600\/60 { border-color: #c9d2e0 !important; }
+html.theme-light .border-slate-500\/60, html.theme-light .border-slate-500 { border-color: #c9d2e0 !important; }
+html.theme-light .border-slate-600 { border-color: #c9d2e0 !important; }
+html.theme-light .border-white\/15 { border-color: rgba(15, 23, 42, 0.16) !important; }
+html.theme-light .border-white\/10 { border-color: rgba(15, 23, 42, 0.10) !important; }
+
+/* النصوص الفاتحة → داكنة للقراءة */
+html.theme-light .text-slate-100, html.theme-light .text-slate-200 { color: #17202e !important; }
+html.theme-light .text-slate-300 { color: #2c3949 !important; }
+html.theme-light .text-slate-400, html.theme-light .text-slate-500 { color: #5f6d81 !important; }
+html.theme-light .text-slate-600 { color: #8a97a8 !important; }
+html.theme-light .text-amber-200, html.theme-light .text-amber-300 { color: #9a6b12 !important; }
+html.theme-light .text-cyan-300 { color: #0b6e82 !important; }
+html.theme-light .text-fuchsia-300 { color: #93298c !important; }
+html.theme-light .text-emerald-300 { color: #067052 !important; }
+html.theme-light .text-green-300 { color: #1a7a42 !important; }
+html.theme-light .text-red-300 { color: #b32424 !important; }
+html.theme-light .text-amber-200\/70, html.theme-light .text-green-200\/70 { color: #9a6b12 !important; }
+html.theme-light .placeholder\:text-slate-500::placeholder { color: #8a97a8 !important; }
+
+/* ============================================================
+   ✨ نظام التصميم الموحّد — فخامة هادئة (Quiet Luxury)
+   أسطح داكنة نظيفة + حد ذهبي خافت + توهج مقيّد — RTL متجاوب
+   ============================================================ */
+.glass {
+  background: rgba(11, 15, 23, 0.78);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  border-radius: 1.1rem;
+  box-shadow: 0 10px 34px rgba(2, 4, 10, 0.5), inset 0 1px 0 rgba(255, 255, 255, 0.05);
+}
+html.theme-light .glass {
+  background: rgba(255, 255, 255, 0.9);
+  border: 1px solid rgba(15, 23, 42, 0.08);
+  box-shadow: 0 8px 26px rgba(23, 32, 46, 0.08);
+}
+
+/* خلفية الموقع الموحدة — هالات خافتة راقية بدل التوهج الصاخب */
+.lux {
+  background:
+    radial-gradient(880px 460px at 86% -8%, rgba(99, 102, 241, 0.09), transparent 60%),
+    radial-gradient(720px 420px at 8% 4%, rgba(231, 184, 76, 0.05), transparent 55%),
+    radial-gradient(680px 500px at 50% 114%, rgba(79, 70, 229, 0.07), transparent 60%),
+    #070b14;
+}
+html.theme-light .lux { background: linear-gradient(180deg, #fbfcfe, #f7f6f2); }
+
+/* كلمات العنوان — نظام لوني راقٍ: ذهب شامبانيا + أبيض ثلجي + فيروزي مطفي + بنفسجي ناعم */
+.nw-yellow { color: #ecd28a; text-shadow: 0 1px 10px rgba(231, 184, 76, 0.22); }
+.nw-cyan { color: #8fd8d2; text-shadow: 0 1px 10px rgba(143, 216, 210, 0.18); }
+.nw-pink { color: #c9b8ee; text-shadow: 0 1px 10px rgba(201, 184, 238, 0.20); }
+.nw-white { color: #f4f6fb; text-shadow: 0 1px 10px rgba(244, 246, 251, 0.16); }
+
+/* كبسولة مميزات — زجاج رقيق بحد رفيع، بلا نيون */
+.neon-pill {
+  border: 1px solid rgba(255, 255, 255, 0.12);
+  background: rgba(15, 20, 32, 0.66);
+  box-shadow: 0 1px 0 rgba(255, 255, 255, 0.04) inset;
+  border-radius: 9999px;
+}
+
+/* شارة ذهبية دائرية — لمسة سعر فخمة هادئة */
+.gold-badge-round {
+  background: radial-gradient(circle at 35% 30%, #f3d98a, #dfb04a 62%, #b8862b);
+  color: #2b1c05;
+  border-radius: 9999px;
+  box-shadow: 0 4px 16px rgba(223, 176, 74, 0.35), inset 0 1px 3px rgba(255, 255, 255, 0.45);
+}
+
+/* مربع مميزات — سطح نظيف بحد رفيع بدل التدرج البنفسجي الصاخب */
+.feature-tile {
+  border: 1px solid rgba(255, 255, 255, 0.09);
+  background: rgba(15, 20, 32, 0.55);
+  border-radius: 1rem;
+  box-shadow: 0 2px 10px rgba(2, 4, 10, 0.3);
+  transition: border-color 0.2s ease, background 0.2s ease;
+}
+.feature-tile:hover {
+  border-color: var(--gold-soft);
+  background: rgba(19, 25, 39, 0.7);
+}
+html.theme-light .feature-tile {
+  background: rgba(255, 255, 255, 0.85);
+  border: 1px solid rgba(15, 23, 42, 0.08);
+  box-shadow: 0 2px 10px rgba(23, 32, 46, 0.06);
+}
+
+/* فاصل ذهبي رفيع تحت العناوين/الأقسام */
+.gold-line { height: 1px; background: linear-gradient(90deg, transparent, rgba(231, 184, 76, 0.55), transparent); }
+
+/* شارة/رقاقة بحد ذهبي خافت */
+.chip-gold {
+  border: 1px solid rgba(231, 184, 76, 0.32);
+  background: rgba(9, 12, 19, 0.6);
+  box-shadow: 0 1px 8px rgba(231, 184, 76, 0.08);
+}
+
+.neon-title {
+  /* عنوان ذهبي شامبانيا راقي — توهج مقيّد جدًا وصفر تكلفة رسم */
+  background: linear-gradient(92deg, #ecd28a 0%, #fdf3d3 30%, #dfb04a 55%, #ecd28a 80%, #f5e2ab 100%);
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+  filter: drop-shadow(0 2px 6px rgba(223, 176, 74, 0.18));
+}
+html.theme-light .neon-title { filter: drop-shadow(0 2px 5px rgba(154, 107, 18, 0.18)); }
+
+/* زر ذهبي راقي — مسطح أكثر وحدود نظيفة */
+.btn-gold {
+  background: linear-gradient(92deg, #ecd28a, #dfb04a 55%, #ecd28a);
+  color: #2b1c05;
+  font-weight: 800;
+  border-radius: 9999px;
+  box-shadow: 0 2px 10px rgba(223, 176, 74, 0.28), inset 0 1px 0 rgba(255, 255, 255, 0.4);
+  transition: transform 0.18s ease, filter 0.18s ease, box-shadow 0.18s ease;
+}
+.btn-gold:hover { transform: translateY(-1px); filter: brightness(1.05); box-shadow: 0 4px 16px rgba(223, 176, 74, 0.36), inset 0 1px 0 rgba(255, 255, 255, 0.4); }
+
+/* زر ثانوي — بنفسجي ملكي هادئ بنص أبيض نظيف */
+.btn-neon {
+  background: linear-gradient(92deg, #4f46e5, #6d28d9 60%, #5b21b6);
+  color: #f5f3ff;
+  font-weight: 800;
+  border-radius: 9999px;
+  box-shadow: 0 2px 10px rgba(79, 70, 229, 0.30), 0 1px 2px rgba(0, 0, 0, 0.25);
+  transition: transform 0.18s ease, filter 0.18s ease, box-shadow 0.18s ease;
+}
+.btn-neon:hover {
+  transform: translateY(-1px);
+  filter: brightness(1.08);
+  box-shadow: 0 4px 16px rgba(79, 70, 229, 0.40), 0 1px 2px rgba(0, 0, 0, 0.25);
+}
+html.theme-light .btn-neon { color: #fff; }
+
+/* بطاقة تفاعلية — رفعة ناعمة بلا توهج ملون */
+.card-3d {
+  transition: transform 0.22s ease, box-shadow 0.22s ease, border-color 0.22s ease;
+}
+.card-3d:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 16px 38px rgba(2, 4, 10, 0.5);
+  border-color: rgba(231, 184, 76, 0.30);
+}
+html.theme-light .card-3d:hover { box-shadow: 0 14px 30px rgba(23, 32, 46, 0.12); border-color: rgba(154, 107, 18, 0.25); }
+
+/* احترام تفضيل تقليل الحركة */
+@media (prefers-reduced-motion: reduce) {
+  .btn-neon, .btn-gold, .card-3d, .feature-tile { transition: none !important; }
+}
